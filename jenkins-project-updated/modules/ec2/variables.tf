@@ -14,7 +14,7 @@ variable "vpc_id" {
 
 variable "projectname" {
   type = string
-  default = "project"
+  default = ""
 }
 
 variable "sgname" {
@@ -30,4 +30,9 @@ variable "filename" {
 variable "keyname" {
   type = string
   default = "jenkins"
+}
+
+variable "ec2name" {
+  type = string
+  default = "Jenkins"
 }

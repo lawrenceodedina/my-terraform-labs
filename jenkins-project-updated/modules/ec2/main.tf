@@ -15,4 +15,8 @@ resource "aws_instance" "ec2" {
   vpc_security_group_ids = [ aws_security_group.jenkinssg.id ]
   key_name = aws_key_pair.ec2_key.key_name
   user_data = file("modules\\ec2\\userdata.sh") # I am using windows
+
+  tags = {
+    Name = "${var.ec2name}-instance"
+  }
 }

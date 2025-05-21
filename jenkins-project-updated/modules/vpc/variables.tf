@@ -1,6 +1,6 @@
 variable "projectname" {
   type = string
-  default = "project"
+  default = "Jenkins-lab"
 }
 
 variable "az1" {

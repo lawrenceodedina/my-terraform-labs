@@ -29,6 +29,10 @@ resource "aws_route_table" "myrt" {
     gateway_id = aws_internet_gateway.myigw.id
     cidr_block = "0.0.0.0/0"
   }
+
+  tags = {
+    Name = "${var.projectname}-RT"
+  }
 }
 
 resource "aws_route_table_association" "ass1" {
