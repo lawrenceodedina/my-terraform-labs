@@ -1,0 +1,13 @@
+#!/bin/bash 
+yum update -y
+yum install httpd mariadb-server amazon-efs-utils -y
+systemctl start httpd
+systemctl enable httpd
+systemctl start mariadb
+systemctl enable mariadb
+echo "Hello from $(hostname -f)" >> /var/www/html/index.html
+sudo mkdir /mnt/efs/
+sudo mount -t efs -o tls ${efsid}:/ /mnt/efs/
+echo ${efsid}:/ /mnt/efs/ efs defaults,_netdev 0 0 >> /etc/fstab
+echo "*/5 * * * * aws s3 cp /var/log/httpd s3://${bucket_name} --recursive" > /tmp/cronfile
+crontab /tmp/cronfile
