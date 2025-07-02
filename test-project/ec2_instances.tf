@@ -26,10 +26,6 @@ resource "aws_instance" "bastion" {
   }
 }
 
-locals {
-  bucket_name = aws_s3_bucket.utcbucket.bucket
-}
-
 
 resource "aws_instance" "webapps" {
   for_each = module.vpc.private_app_subnet_ids
