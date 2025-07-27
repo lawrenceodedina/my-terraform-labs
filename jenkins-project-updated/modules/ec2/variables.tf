@@ -3,6 +3,11 @@ variable "instancetype" {
   default = "t2.medium"
 }
 
+variable "volume_size" {
+  type = string
+  default = "30"
+}
+
 variable "subnet_id" {
   
 }
@@ -34,5 +39,5 @@ variable "keyname" {
 
 variable "ec2name" {
   type = string
-  default = "Jenkins"
+  default = "Jenkins-terraform-test"
 }

@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-# Bash shell script to install Jenkins on Amazon linux 2023 
+# Bash shell script to install Jenkins and terraform on Amazon linux 2023 
 
 echo "Updating system packages..."
 sudo dnf update -y
@@ -20,3 +20,18 @@ sudo dnf install -y jenkins
 echo "Enabling and starting Jenkins service..."
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
+
+# Install jq package for get Terraform version
+sudo dnf install jq -y
+
+# Get the latest version of Terraform from the releases page
+TERRAFORM_VERSION=1.6.5
+# The get the Latest version of Terraform, you can execute this command : 
+
+# Download and install Terraform
+sudo curl -O "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
+unzip "terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
+sudo mv terraform /usr/local/bin/
+
+# Clean up downloaded files
+rm -f "terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
