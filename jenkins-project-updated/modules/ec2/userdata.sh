@@ -15,7 +15,7 @@ sudo curl -o /etc/yum.repos.d/jenkins.repo \
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 
 echo "Installing Jenkins..."
-sudo dnf install -y jenkins
+sudo dnf install jenkins git -y 
 
 echo "Enabling and starting Jenkins service..."
 sudo systemctl enable jenkins
