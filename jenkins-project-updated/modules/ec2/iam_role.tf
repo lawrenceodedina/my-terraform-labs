@@ -13,6 +13,7 @@ resource "aws_iam_policy" "adminpolicy" {
 }
 
 resource "aws_iam_role" "jenkinsadminrole" {
+  name = "Jenkins-terraform-role"
   assume_role_policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
